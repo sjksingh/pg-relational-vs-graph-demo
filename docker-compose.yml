@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: sjksingh/dbre-postgres15-extended
+    container_name: pg15-extended
+    environment:
+      POSTGRES_PASSWORD: manager
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
